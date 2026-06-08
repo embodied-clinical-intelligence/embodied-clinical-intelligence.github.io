@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embodied Clinical Intelligence</title>
+    <meta name="description" content="Advancing research in embodied clinical intelligence. A community at the intersection of AI and medicine — ferociously technical, unequivocally clinical.">
+    <meta name="color-scheme" content="light">
+    <link rel="canonical" href="https://embodied-clinical-intelligence.github.io">
+    <meta property="og:title" content="ECLIC — Embodied Clinical Intelligence Colloquium">
+    <meta property="og:description" content="Advancing research in embodied clinical intelligence.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://embodied-clinical-intelligence.github.io">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --fg: #0d1117;
+            --muted: #57606a;
+            --card-border: rgba(13, 17, 23, 0.08);
+            --maxw: 680px;
+            --padx: 40px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font: 16px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            color: var(--fg);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            scrollbar-gutter: stable;
+            overflow-x: hidden;
+        }
+
+        .wrap {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 80px var(--padx) 100px;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font: 400 clamp(32px, 5vw, 42px)/1.2 Georgia, "Times New Roman", serif;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--card-border);
+            margin: 48px 0;
+        }
+
+        h2 {
+            font: 400 14px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .vision {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--fg);
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        /* Accent columns with fade-to-ASCII */
+        .accent-col {
+            position: fixed;
+            bottom: 0;
+            width: 380px;
+            z-index: 0;
+        }
+
+        .accent-col .src-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            opacity: 0.25;
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-drag: none;
+            -webkit-mask-image: linear-gradient(to top, black, black 40%, transparent 70%);
+            mask-image: linear-gradient(to top, black, black 40%, transparent 70%);
+        }
+
+        .accent-col .ascii-art {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            font-family: "Courier New", monospace;
+            font-size: 9px;
+            line-height: 1.3;
+            font-weight: 900;
+            color: #000;
+            white-space: pre;
+            overflow: hidden;
+            pointer-events: none;
+            opacity: 1.0;
+            -webkit-mask-image: linear-gradient(to bottom, black, black 30%, transparent 85%);
+            mask-image: linear-gradient(to bottom, black, black 30%, transparent 85%);
+        }
+
+        .accent-left { left: 20px; }
+        .accent-right { right: 20px; }
+
+        /* Background ASCII character columns */
+        .ascii-bg {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            z-index: -1;
+            overflow: hidden;
+            font-family: "Courier New", monospace;
+            font-size: 14px;
+            line-height: 1.2;
+            color: var(--fg);
+            opacity: 0.1;
+            pointer-events: none;
+            user-select: none;
+            word-break: break-all;
+        }
+
+        .ascii-bg-left {
+            left: 0;
+            right: calc(50% + var(--maxw) / 2);
+        }
+
+        .ascii-bg-right {
+            left: calc(50% + var(--maxw) / 2);
+            right: 0;
+        }
+
+        @media (max-width: 900px) {
+            .accent-col { display: none; }
+            .ascii-bg { display: none; }
+        }
+
+        @media (max-width: 600px) {
+            .wrap { padding: 60px 24px 80px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="ascii-bg ascii-bg-left" aria-hidden="true"></div>
+    <div class="ascii-bg ascii-bg-right" aria-hidden="true"></div>
+
+    <div class="accent-col accent-left" aria-hidden="true">
+        <img src="Grays-Anatomy_Interior-Illustration_3_750x981.webp" alt="" class="src-img">
+        <div class="ascii-art">                                                                      
+                                                   .:.                
+                                   .:               :==               
+                                 ..:.              .:=*=.             
+                             .:..   .::   .           ::...           
+                    .       -=.::=:.: .=                     ..       
+                   .    .   :-:::+: ...+-...:-:..              ...    
+                 . .    ..   .:. ::=+.:-=-----:..::.          .:.:.   
+                   ...    ..::..::: :.:*+=+-:--.:.. ..       ..::     
+      .        .    ..        :::---..:+=-:=+=-..    ..      ..-=.    
+  ... . .         .  ..       ..:---=++=====++=-:....:.       .-=:    
+   .....  .        . ...  ..::::::-=---=++**=++-:--::--::.      -:    
+    ..     .      ..  ..:. ::---===::-=+-:+*+-**---=--====-:..        
+  .        .       ..    :::---==:::---=-.=*++=#*===============:. .  
+           :.        .....-:.-=:::::----=:=*++-*=+=+++==+=====++==-.  
+           :.             ..-:-=::::--=+=.:*=+-+++===+=---========.   
+           .........        .-:==:----===::*++-++=====----=====-.     
+     .:     .  ...            --+:-=:-==-=++++-++---:--.:--=-:.       
+       ...  .                 :=+=--:=-==-=-=:-*=-+=---:--:-.         
+        .::.:.                .=++=:-=--===-:.**=+=--::==-=:          
+          ..... ..            -+=*-:=:-=-==-:-*+==-:.:==.--:          
+           .. ..  ....       .=+=+:=--=::==-.=*+=-.:=+=:-=:           
+            ::..            :-+-==:-:-----==::**=:-==-=:=-.      .    
+            ::... .        ---+-+:-::---:--=-.=--=-.:+==-:            
+             ....:       .-:-=-++--:-:=::-==-:---:::=+==:=            
+           .  .  :      ---=+-=*--:-:-+---===-.+=---+=-:-*-           
+                 .    :=--=+-=#+-----=--====*=..+=::=--:-===:         
+                   .:----=-=+**-------=====-++=..=**===.:-:---        
+                .:-==------+*=--------:--==-:--+..+*-:-.:-.-::.       
+             .-===-:--:-=+++==+=----==--=+==----..:*=:-..:.-....      
+          ...:-:-::::::---=*++=--:-=+-=:-----:-.:-=++=-.:.:-.         
+      .:::---::.......::.::::......:::-:::.:::::.:--=:..-.:.          
+     :-:-==-==--:::::--::-:::-=:-=---:::-=---=-=:.:.:. .. .           
+        ...:..     ..  ::...:. .-=--:.::::.:-==-.  .                  
+                                                                      </div>
+    </div>
+    <div class="accent-col accent-right" aria-hidden="true">
+        <img src="Grays-Anatomy_Interior-Illustration_6_750x981.webp" alt="" class="src-img">
+        <div class="ascii-art">                                                                      
+                                                                      
+                                         .                            
+                                  .  .       ...                      
+                     .                      .                         
+                   ::.:...:. . ..                                     
+                  --:::::::::::..                     .               
+                 :--:..:.:.-=-...    .                 ..             
+                --:::--:::-+-....    .:...              .             
+               .=-::-==-::-=  .      .:::::.             .            
+              .-+=-+=-===::-:         :..::-:            .            
+             .::+=-:-:::::::=.   .:-.:-----. :.          ..           
+            ::.-=:+=-----==-:::..:::--= ..:. --::.       :            
+            :----::++::-===:.:----+-=..:: .:. -----:.     :            
+            ..-++--::=::=+=-.:-:.:--+=: =:..:-::::-----:::.:             
+             --=----=*++:-:....:=:+- .:::. ... .----==-.              
+             :==--:-====+-::....-=#+::. ...::. ..:=++:                
+              =+==-::-----=-:::-:+*=..:..:----:..:--                  
+              .----::=-::--:..:--++.:-..:--++--.::                    
+               -=-==---: .....:-----+: .:-++--:.=.                    
+               :=:=----::--::.:-:: .=-.:-++=-=.-+                     
+                ...:--==-:-.   :.. .-=--++-==:.-+.                    
+                       :=-.:. .-:. .==::==-=-.::=-                    
+                         =:.-:=... :=-.-::==....-*                    
+                         :=.-=-:  .==::-..--:....+=                   
+                          +---:...:==-=-..-:--:.:-*=                  
+                           ==:-:..-=-:-:..-:.:=-::=*-                 
+                           =-:-----==--:.::.:::-=-:=*:                
+                           =--::::=+=--. :::..:::--==*+:              
+                          :+::: .:=++--:.-:::.::.:::-=+*+:            
+                         .:=::::.:==+=-:--..:......:::-==++:          
+                        ...=:...:::---=-:--:::..:::::::-===+=:        
+                       :---+=..   ....:::.:::.:.:::--::---=--==.      
+                      .=+++*+-:::::--::::.:... ..   ..   .:====+:     
+                      :==-:==- .....-=-:.::.::....::..:.::::::-=*:    
+                       ... .--..     --.      ...  ..  ..  ..  :+*    
+                             .:-.    .::.        .  ..  .   .::::*:   
+                                .:--:-::-::-=:.:-+-::-=::-:=======.   
+                                        .::-:::..::....  ...:....     
+                                                                      </div>
+    </div>
+
+    <main class="wrap">
+        <h1>Embodied Clinical Intelligence</h1>
+        <hr>
+        <p class="vision">
+            AI systems are currently siloed into highly-specific clinical tasks and are not grounded in the complexities of clinical care. 
+            Embodied Clinical Intelligence establishes a new paradigm in which AI systems are designed to be situated in clinical environments, interact with clinicians,
+            and function as intelligent partners that assist in real-time clinical workflows and decision-making.    
+        <hr>
+        <h2>Embodied Clinical Intelligence Colloqium</h2>
+        <p class="vision">
+            We are a community of researchers at the intersection of AI and medicine that are unequivocally technical yet uncomprisingly clinical. In our mission of pushing the frontiers of research in embodied clinical intelligence, 
+            we host workshops, panels, and guest lectures, to build the community advancing the next generation of embodied AI systems.
+        </p>
+    </main>
+
+    <script>
+        (function () {
+            var chars = '{}[]<>/\\|.-+*~:;!?#@&%^=_01';
+            var charW = 10;
+            var charH = 17;
+            document.querySelectorAll('.ascii-bg').forEach(function (el) {
+                var w = el.offsetWidth;
+                var h = window.innerHeight;
+                if (w < 20) return;
+                var cols = Math.ceil(w / charW) + 5;
+                var rows = Math.ceil(h / charH) * 2;
+                var text = '';
+                for (var i = 0; i < cols * rows; i++) {
+                    text += chars[Math.floor(Math.random() * chars.length)];
+                }
+                el.textContent = text;
+            });
+        })();
+    </script>
+</body>
+</html>

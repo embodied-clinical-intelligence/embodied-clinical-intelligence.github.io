@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://embodied-clinical-intelligence.github.io/sitemap.xml

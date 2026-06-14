@@ -3,16 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Embodied Clinical Intelligence</title>
-    <meta name="description" content="Advancing research in embodied clinical intelligence. A community at the intersection of AI and medicine — ferociously technical, unequivocally clinical.">
+    <title>Embodied Clinical Intelligence Colloquium (ECLIC) — AI in Medicine Research</title>
+    <meta name="description" content="Embodied Clinical Intelligence establishes a new paradigm where AI systems are situated in clinical environments, interact with clinicians, and assist in real-time clinical workflows. A research community advancing AI agents in medicine.">
+    <meta name="keywords" content="embodied clinical intelligence, AI in medicine, clinical AI agents, medical AI research, AI clinical workflows, clinical decision support, healthcare AI, AI in radiology, large language models medicine, reinforcement learning clinical">
     <meta name="color-scheme" content="light dark">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="apple-touch-icon" href="favicon.png" />
     <link rel="canonical" href="https://embodied-clinical-intelligence.github.io">
-    <meta property="og:title" content="ECLIC — Embodied Clinical Intelligence Colloquium">
-    <meta property="og:description" content="Advancing research in embodied clinical intelligence.">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Embodied Clinical Intelligence Colloquium (ECLIC) — AI in Medicine Research">
+    <meta property="og:description" content="A research community advancing embodied AI systems in clinical medicine. Unequivocally technical, uncompromisingly clinical.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://embodied-clinical-intelligence.github.io">
+    <meta property="og:image" content="https://embodied-clinical-intelligence.github.io/favicon.png">
+    <meta property="og:site_name" content="Embodied Clinical Intelligence Colloquium">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Embodied Clinical Intelligence Colloquium (ECLIC)">
+    <meta name="twitter:description" content="Research community advancing embodied AI systems in clinical medicine — agents, workflows, and decision support.">
+    <meta name="twitter:image" content="https://embodied-clinical-intelligence.github.io/favicon.png">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ResearchOrganization",
+        "name": "Embodied Clinical Intelligence Colloquium",
+        "alternateName": "ECLIC",
+        "url": "https://embodied-clinical-intelligence.github.io",
+        "logo": "https://embodied-clinical-intelligence.github.io/favicon.png",
+        "description": "A research community advancing embodied clinical intelligence — AI systems situated in clinical environments that interact with clinicians and assist in real-time clinical workflows and decision-making.",
+        "knowsAbout": [
+            "Embodied Clinical Intelligence",
+            "Artificial Intelligence in Medicine",
+            "Clinical AI Agents",
+            "Reinforcement Learning",
+            "Vision-Language Models",
+            "Medical AI Evaluation",
+            "Clinical Decision Support Systems",
+            "AI in Radiology"
+        ],
+        "event": {
+            "@type": "EducationEvent",
+            "name": "ECLIC Workshop Series",
+            "description": "Workshop series covering technical AI and clinical topics at the intersection of embodied intelligence and medicine",
+            "organizer": {
+                "@type": "Organization",
+                "name": "Embodied Clinical Intelligence Colloquium"
+            },
+            "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+            "about": [
+                "Reinforcement Learning for Clinical AI",
+                "Vision-Language Models in Medicine",
+                "Clinical AI Evaluation",
+                "AI Agents in Healthcare"
+            ]
+        }
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@400;500;550;600;700&family=Manrope:wght@400;500&display=swap" rel="stylesheet" />
@@ -267,19 +320,24 @@
     </button>
 
     <main class="wrap">
-        <h1>Embodied Clinical Intelligence Colloquium (ECLIC)</h1>
-        <p class="vision">
-            AI systems are currently siloed into highly-specific clinical tasks and are not grounded in the complexities of clinical care.
-            <strong>Embodied Clinical Intelligence</strong> establishes a new paradigm in which AI systems are designed to be situated in clinical environments, interact with clinicians,
-            and function as intelligent partners that assist in real-time clinical workflows and decision-making.
-        </p>
-        <p class="vision">
-            We are a community of researchers at the intersection of AI and medicine that are <strong>unequivocally technical yet uncompromisingly clinical</strong>. In our mission of pushing the frontiers of research in embodied clinical intelligence,
-            we host workshops, fireside chats, and guest lectures, to build the community advancing the next generation of embodied AI systems in medicine.
-        </p>
+        <header>
+            <h1>Embodied Clinical Intelligence Colloquium (ECLIC)</h1>
+        </header>
+        <section aria-label="About">
+            <p class="vision">
+                AI systems are currently siloed into highly-specific clinical tasks and are not grounded in the complexities of clinical care.
+                <strong>Embodied Clinical Intelligence</strong> establishes a new paradigm in which AI systems are designed to be situated in clinical environments, interact with clinicians,
+                and function as intelligent partners that assist in real-time clinical workflows and decision-making.
+            </p>
+            <p class="vision">
+                We are a community of researchers at the intersection of AI and medicine that are <strong>unequivocally technical yet uncompromisingly clinical</strong>. In our mission of pushing the frontiers of research in embodied clinical intelligence,
+                we host workshops, fireside chats, and guest lectures, to build the community advancing the next generation of embodied AI systems in medicine.
+            </p>
+        </section>
 
         <hr />
 
+        <section aria-label="Workshop Series">
         <h2>Workshop Series</h2>
         <div class="schedule">
             <div class="session">
@@ -371,15 +429,16 @@
                 </ul>
             </div>
         </div>
+        </section>
 
         <footer style="user-select:none;">
             <span>&copy; <span id="year"></span> Embodied Clinical Intelligence</span>
         </footer>
     </main>
 
-    <div class="ascii-video-wrap" aria-hidden="true">
-        <video id="ascii-video" autoplay muted loop playsinline></video>
-    </div>
+    <aside class="ascii-video-wrap" aria-hidden="true">
+        <video id="ascii-video" autoplay muted loop playsinline aria-label="ASCII art animation of a clinical robot representing embodied clinical intelligence"></video>
+    </aside>
 
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();

@@ -63,6 +63,8 @@ extract.on('close', (code) => {
     asciiFrames.push(lines.join('\n'));
   }
 
+  asciiFrames.reverse();
+
   const usedFrameCount = asciiFrames.length;
   console.log(`Using ${usedFrameCount} frames after trim`);
 

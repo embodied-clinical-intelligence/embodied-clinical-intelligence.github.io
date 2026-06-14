@@ -4,8 +4,8 @@ const INPUT = 'ascelpius_rod_robot.mp4';
 const COLS = 160;
 const ROWS = 51;
 const FPS = 24;
-const TRIM_START = 8;
-const TRIM_END = 3;
+const TRIM_START = 12;
+const TRIM_END = 5;
 
 const RAMP = ' .:-=+*#%@';
 const CROP = '';

@@ -5,265 +5,264 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Embodied Clinical Intelligence</title>
     <meta name="description" content="Advancing research in embodied clinical intelligence. A community at the intersection of AI and medicine — ferociously technical, unequivocally clinical.">
-    <meta name="color-scheme" content="light">
+    <meta name="color-scheme" content="light dark">
     <link rel="canonical" href="https://embodied-clinical-intelligence.github.io">
     <meta property="og:title" content="ECLIC — Embodied Clinical Intelligence Colloquium">
     <meta property="og:description" content="Advancing research in embodied clinical intelligence.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://embodied-clinical-intelligence.github.io">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@400;500;550;600;700&family=Manrope:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         :root {
             --bg: #ffffff;
             --fg: #0d1117;
             --muted: #57606a;
+            --accent: #1f6feb;
             --card-border: rgba(13, 17, 23, 0.08);
-            --maxw: 680px;
+            --maxw: 960px;
             --padx: 40px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #000000;
+                --fg: #e4e4e4;
+                --muted: #9ca3af;
+                --accent: #58a6ff;
+                --card-border: rgba(255, 255, 255, 0.25);
+            }
+        }
+        html[data-theme="dark"] {
+            --bg: #000000;
+            --fg: #e4e4e4;
+            --muted: #9ca3af;
+            --accent: #58a6ff;
+            --card-border: rgba(255, 255, 255, 0.25);
+        }
+        html[data-theme="light"] {
+            --bg: #ffffff;
+            --fg: #0d1117;
+            --muted: #57606a;
+            --accent: #1f6feb;
+            --card-border: rgba(13, 17, 23, 0.08);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        html {
+            overflow-y: scroll;
+            scrollbar-gutter: stable;
+        }
+        html, body { height: 100%; }
+
         body {
-            font: 16px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            font: 16px/1.7 "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
             color: var(--fg);
             background: var(--bg);
             -webkit-font-smoothing: antialiased;
-            scrollbar-gutter: stable;
-            overflow-x: hidden;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            color: var(--fg);
+            text-decoration: underline;
+        }
+        a:hover { text-decoration: none; }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            background: transparent;
+            border: 1px solid var(--card-border);
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--fg);
+            font-size: 18px;
+            transition: border-color 0.2s ease;
+        }
+        .theme-toggle:hover {
+            border-color: var(--fg);
+        }
+
+        .ascii-video-wrap {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: calc(300px + var(--maxw) - 200px);
+            z-index: 0;
+            pointer-events: none;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .ascii-video-wrap video {
+            max-width: 350px;
+            max-height: 575px;
+            object-fit: contain;
+            opacity: 1;
+        }
+        @media (max-width: 1400px) {
+            .ascii-video-wrap {
+                position: relative;
+                left: 0;
+                top: auto;
+                right: auto;
+                bottom: auto;
+                width: 100%;
+                justify-content: center;
+                padding: 40px 0;
+            }
+            .ascii-video-wrap video {
+                max-width: 280px;
+                max-height: 460px;
+            }
         }
 
         .wrap {
             max-width: var(--maxw);
-            margin: 0 auto;
-            padding: 80px var(--padx) 100px;
+            margin: 0;
+            padding: 60px 40px 80px 240px;
             position: relative;
-            z-index: 1;
+            z-index: 2;
+        }
+        @media (max-width: 1400px) {
+            .wrap {
+                padding: 40px 24px 60px;
+                margin: 0 auto;
+            }
+            .wrap h1 { text-align: center; }
+            .wrap .vision { text-align: left; }
+            .wrap footer { text-align: center; }
         }
 
         h1 {
-            font: 400 clamp(32px, 5vw, 42px)/1.2 Georgia, "Times New Roman", serif;
+            font-family: "Spline Sans Mono", monospace;
+            font-weight: 500;
+            font-size: clamp(32px, 5vw, 42px);
+            line-height: 1.2;
             margin-bottom: 8px;
-            letter-spacing: -0.5px;
+            letter-spacing: -0.3px;
         }
 
         hr {
             border: none;
-            border-top: 1px solid var(--card-border);
+            height: 1px;
+            background: var(--card-border);
             margin: 48px 0;
         }
 
         h2 {
-            font: 400 14px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--muted);
+            font-family: "Spline Sans Mono", monospace;
+            font-weight: 500;
+            font-size: clamp(22px, 3vw, 28px);
+            letter-spacing: -0.3px;
+            color: var(--fg);
             margin-bottom: 20px;
         }
 
         .vision {
-            font-size: 1rem;
+            font-size: 1.05rem;
             line-height: 1.8;
-            color: var(--fg);
-            text-align: justify;
-            hyphens: auto;
+            color: var(--muted);
+            text-align: left;
         }
 
-        /* Accent columns with fade-to-ASCII */
-        .accent-col {
-            position: fixed;
-            bottom: 0;
-            width: 380px;
-            z-index: 0;
+        .vision + .vision {
+            margin-top: 24px;
         }
 
-        .accent-col .src-img {
-            width: 100%;
-            height: auto;
-            display: block;
-            opacity: 0.25;
-            pointer-events: none;
-            user-select: none;
-            -webkit-user-drag: none;
-            -webkit-mask-image: linear-gradient(to top, black, black 40%, transparent 70%);
-            mask-image: linear-gradient(to top, black, black 40%, transparent 70%);
-        }
-
-        .accent-col .ascii-art {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            font-family: "Courier New", monospace;
-            font-size: 9px;
-            line-height: 1.3;
-            font-weight: 900;
-            color: #000;
-            white-space: pre;
-            overflow: hidden;
-            pointer-events: none;
-            opacity: 1.0;
-            -webkit-mask-image: linear-gradient(to bottom, black, black 30%, transparent 85%);
-            mask-image: linear-gradient(to bottom, black, black 30%, transparent 85%);
-        }
-
-        .accent-left { left: 20px; }
-        .accent-right { right: 20px; }
-
-        /* Background ASCII character columns */
-        .ascii-bg {
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            z-index: -1;
-            overflow: hidden;
-            font-family: "Courier New", monospace;
-            font-size: 14px;
-            line-height: 1.2;
-            color: var(--fg);
-            opacity: 0.1;
-            pointer-events: none;
-            user-select: none;
-            word-break: break-all;
-        }
-
-        .ascii-bg-left {
-            left: 0;
-            right: calc(50% + var(--maxw) / 2);
-        }
-
-        .ascii-bg-right {
-            left: calc(50% + var(--maxw) / 2);
-            right: 0;
-        }
-
-        @media (max-width: 900px) {
-            .accent-col { display: none; }
-            .ascii-bg { display: none; }
+        footer {
+            margin-top: 32px;
+            color: var(--muted);
+            font-size: 13px;
+            text-align: left;
+            padding: 16px 0;
         }
 
         @media (max-width: 600px) {
-            .wrap { padding: 60px 24px 80px; }
+            .wrap { padding: 40px 24px 60px; }
         }
     </style>
 </head>
 <body>
-    <div class="ascii-bg ascii-bg-left" aria-hidden="true"></div>
-    <div class="ascii-bg ascii-bg-right" aria-hidden="true"></div>
-
-    <div class="accent-col accent-left" aria-hidden="true">
-        <img src="assets/Grays-Anatomy_Interior-Illustration_3_750x981.webp" alt="" class="src-img">
-        <div class="ascii-art">                                                                      
-                                                   .:.                
-                                   .:               :==               
-                                 ..:.              .:=*=.             
-                             .:..   .::   .           ::...           
-                    .       -=.::=:.: .=                     ..       
-                   .    .   :-:::+: ...+-...:-:..              ...    
-                 . .    ..   .:. ::=+.:-=-----:..::.          .:.:.   
-                   ...    ..::..::: :.:*+=+-:--.:.. ..       ..::     
-      .        .    ..        :::---..:+=-:=+=-..    ..      ..-=.    
-  ... . .         .  ..       ..:---=++=====++=-:....:.       .-=:    
-   .....  .        . ...  ..::::::-=---=++**=++-:--::--::.      -:    
-    ..     .      ..  ..:. ::---===::-=+-:+*+-**---=--====-:..        
-  .        .       ..    :::---==:::---=-.=*++=#*===============:. .  
-           :.        .....-:.-=:::::----=:=*++-*=+=+++==+=====++==-.  
-           :.             ..-:-=::::--=+=.:*=+-+++===+=---========.   
-           .........        .-:==:----===::*++-++=====----=====-.     
-     .:     .  ...            --+:-=:-==-=++++-++---:--.:--=-:.       
-       ...  .                 :=+=--:=-==-=-=:-*=-+=---:--:-.         
-        .::.:.                .=++=:-=--===-:.**=+=--::==-=:          
-          ..... ..            -+=*-:=:-=-==-:-*+==-:.:==.--:          
-           .. ..  ....       .=+=+:=--=::==-.=*+=-.:=+=:-=:           
-            ::..            :-+-==:-:-----==::**=:-==-=:=-.      .    
-            ::... .        ---+-+:-::---:--=-.=--=-.:+==-:            
-             ....:       .-:-=-++--:-:=::-==-:---:::=+==:=            
-           .  .  :      ---=+-=*--:-:-+---===-.+=---+=-:-*-           
-                 .    :=--=+-=#+-----=--====*=..+=::=--:-===:         
-                   .:----=-=+**-------=====-++=..=**===.:-:---        
-                .:-==------+*=--------:--==-:--+..+*-:-.:-.-::.       
-             .-===-:--:-=+++==+=----==--=+==----..:*=:-..:.-....      
-          ...:-:-::::::---=*++=--:-=+-=:-----:-.:-=++=-.:.:-.         
-      .:::---::.......::.::::......:::-:::.:::::.:--=:..-.:.          
-     :-:-==-==--:::::--::-:::-=:-=---:::-=---=-=:.:.:. .. .           
-        ...:..     ..  ::...:. .-=--:.::::.:-==-.  .                  
-                                                                      </div>
-    </div>
-    <div class="accent-col accent-right" aria-hidden="true">
-        <img src="assets/Grays-Anatomy_Interior-Illustration_6_750x981.webp" alt="" class="src-img">
-        <div class="ascii-art">                                                                      
-                                                                      
-                                         .                            
-                                  .  .       ...                      
-                     .                      .                         
-                   ::.:...:. . ..                                     
-                  --:::::::::::..                     .               
-                 :--:..:.:.-=-...    .                 ..             
-                --:::--:::-+-....    .:...              .             
-               .=-::-==-::-=  .      .:::::.             .            
-              .-+=-+=-===::-:         :..::-:            .            
-             .::+=-:-:::::::=.   .:-.:-----. :.          ..           
-            ::.-=:+=-----==-:::..:::--= ..:. --::.       :            
-            :----::++::-===:.:----+-=..:: .:. -----:.     :            
-            ..-++--::=::=+=-.:-:.:--+=: =:..:-::::-----:::.:             
-             --=----=*++:-:....:=:+- .:::. ... .----==-.              
-             :==--:-====+-::....-=#+::. ...::. ..:=++:                
-              =+==-::-----=-:::-:+*=..:..:----:..:--                  
-              .----::=-::--:..:--++.:-..:--++--.::                    
-               -=-==---: .....:-----+: .:-++--:.=.                    
-               :=:=----::--::.:-:: .=-.:-++=-=.-+                     
-                ...:--==-:-.   :.. .-=--++-==:.-+.                    
-                       :=-.:. .-:. .==::==-=-.::=-                    
-                         =:.-:=... :=-.-::==....-*                    
-                         :=.-=-:  .==::-..--:....+=                   
-                          +---:...:==-=-..-:--:.:-*=                  
-                           ==:-:..-=-:-:..-:.:=-::=*-                 
-                           =-:-----==--:.::.:::-=-:=*:                
-                           =--::::=+=--. :::..:::--==*+:              
-                          :+::: .:=++--:.-:::.::.:::-=+*+:            
-                         .:=::::.:==+=-:--..:......:::-==++:          
-                        ...=:...:::---=-:--:::..:::::::-===+=:        
-                       :---+=..   ....:::.:::.:.:::--::---=--==.      
-                      .=+++*+-:::::--::::.:... ..   ..   .:====+:     
-                      :==-:==- .....-=-:.::.::....::..:.::::::-=*:    
-                       ... .--..     --.      ...  ..  ..  ..  :+*    
-                             .:-.    .::.        .  ..  .   .::::*:   
-                                .:--:-::-::-=:.:-+-::-=::-:=======.   
-                                        .::-:::..::....  ...:....     
-                                                                      </div>
-    </div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fa-solid fa-moon" id="theme-icon"></i>
+    </button>
 
     <main class="wrap">
-        <h1>Embodied Clinical Intelligence</h1>
-        <hr>
+        <h1>Embodied Clinical Intelligence Colloquium (ECLIC)</h1>
         <p class="vision">
-            AI systems are currently siloed into highly-specific clinical tasks and are not grounded in the complexities of clinical care. 
+            AI systems are currently siloed into highly-specific clinical tasks and are not grounded in the complexities of clinical care.
             Embodied Clinical Intelligence establishes a new paradigm in which AI systems are designed to be situated in clinical environments, interact with clinicians,
-            and function as intelligent partners that assist in real-time clinical workflows and decision-making.    
-        <hr>
-        <h2>Embodied Clinical Intelligence Colloqium</h2>
+            and function as intelligent partners that assist in real-time clinical workflows and decision-making.
+        </p>
         <p class="vision">
-            We are a community of researchers at the intersection of AI and medicine that are unequivocally technical yet uncomprisingly clinical. In our mission of pushing the frontiers of research in embodied clinical intelligence, 
+            We are a community of researchers at the intersection of AI and medicine that are unequivocally technical yet uncomprisingly clinical. In our mission of pushing the frontiers of research in embodied clinical intelligence,
             we host workshops, panels, and guest lectures, to build the community advancing the next generation of embodied AI systems in medicine.
         </p>
+
+        <footer style="user-select:none;">
+            <span>&copy; <span id="year"></span> Embodied Clinical Intelligence</span>
+        </footer>
     </main>
 
+    <div class="ascii-video-wrap" aria-hidden="true">
+        <video id="ascii-video" autoplay muted loop playsinline></video>
+    </div>
+
     <script>
-        (function () {
-            var chars = '{}[]<>/\\|.-+*~:;!?#@&%^=_01';
-            var charW = 10;
-            var charH = 17;
-            document.querySelectorAll('.ascii-bg').forEach(function (el) {
-                var w = el.offsetWidth;
-                var h = window.innerHeight;
-                if (w < 20) return;
-                var cols = Math.ceil(w / charW) + 5;
-                var rows = Math.ceil(h / charH) * 2;
-                var text = '';
-                for (var i = 0; i < cols * rows; i++) {
-                    text += chars[Math.floor(Math.random() * chars.length)];
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        (function() {
+            var video = document.getElementById('ascii-video');
+            var toggle = document.getElementById('theme-toggle');
+            var icon = document.getElementById('theme-icon');
+            var mq = window.matchMedia('(prefers-color-scheme: dark)');
+            var currentSrc = '';
+
+            function isDark() {
+                var theme = document.documentElement.getAttribute('data-theme');
+                if (theme) return theme === 'dark';
+                return mq.matches;
+            }
+
+            function apply() {
+                var dark = isDark();
+                document.body.style.background = dark ? '#000000' : '#ffffff';
+                icon.className = dark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+                var src = dark ? 'ascii_dark.mp4' : 'ascii_light.mp4';
+                if (src !== currentSrc) {
+                    currentSrc = src;
+                    video.src = src;
+                    video.load();
+                    video.play();
                 }
-                el.textContent = text;
+            }
+
+            toggle.addEventListener('click', function() {
+                var dark = isDark();
+                document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
+                apply();
             });
+
+            mq.addEventListener('change', function() {
+                if (!document.documentElement.getAttribute('data-theme')) apply();
+            });
+
+            apply();
         })();
     </script>
 </body>

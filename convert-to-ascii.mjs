@@ -4,6 +4,8 @@ const INPUT = 'ascelpius_rod_robot.mp4';
 const COLS = 160;
 const ROWS = 51;
 const FPS = 24;
+const TRIM_START = 8;
+const TRIM_END = 3;
 
 const RAMP = ' .:-=+*#%@';
 const CROP = '';
@@ -43,9 +45,12 @@ extract.on('close', (code) => {
   const frameSize = COLS * ROWS;
   const frameCount = Math.floor(raw.length / frameSize);
   console.log(`Extracted ${frameCount} frames (${COLS}x${ROWS} @ ${FPS}fps)`);
+  console.log(`Trimming: removing first ${TRIM_START} and last ${TRIM_END} frames`);
 
+  const trimmedStart = TRIM_START;
+  const trimmedEnd = frameCount - TRIM_END;
   const asciiFrames = [];
-  for (let f = 0; f < frameCount; f++) {
+  for (let f = trimmedStart; f < trimmedEnd; f++) {
     const offset = f * frameSize;
     const lines = [];
     for (let r = 0; r < ROWS; r++) {
@@ -58,6 +63,9 @@ extract.on('close', (code) => {
     asciiFrames.push(lines.join('\n'));
   }
 
+  const usedFrameCount = asciiFrames.length;
+  console.log(`Using ${usedFrameCount} frames after trim`);
+
   const variants = [
     { output: 'ascii_light.mp4', bg: [255, 255, 255], fgFn: (t) => [Math.round(255 * (1 - t)), Math.round(255 * (1 - t)), Math.round(255 * (1 - t))] },
     { output: 'ascii_dark.mp4', bg: [0, 0, 0], fgFn: (t) => [Math.round(228 * t), Math.round(228 * t), Math.round(228 * t)] },
@@ -65,7 +73,7 @@ extract.on('close', (code) => {
 
   let done = 0;
   for (const variant of variants) {
-    encodeVariant(asciiFrames, frameCount, variant, () => {
+    encodeVariant(asciiFrames, usedFrameCount, variant, () => {
       done++;
       if (done === variants.length) {
         console.log('Both variants complete.');

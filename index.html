@@ -205,6 +205,13 @@
         .session-label.technical { color: #3b82f6; }
         .session-label.clinical { color: #ef4444; }
 
+        @media (prefers-color-scheme: dark) {
+            .session-label.technical,
+            .session-label.clinical { color: var(--muted); }
+        }
+        html[data-theme="dark"] .session-label.technical,
+        html[data-theme="dark"] .session-label.clinical { color: var(--muted); }
+
         .session-title {
             font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
             font-weight: 500;
@@ -275,7 +282,7 @@
         <div class="schedule">
             <div class="session">
                 <div class="session-label technical">Technical</div>
-                <div class="session-title">Session 1: Beyond the OpenClaw Hype — From Reinforcement Learning to ReAct</div>
+                <div class="session-title">Session 1: Beyond the OpenClaw Hype: From Reinforcement Learning to ReAct</div>
                 <ul class="session-readings">
                     <li>Reinforcement Learning: An Introduction (Sutton and Barto) [1992]</li>
                     <li>ReAct: Synergizing Reasoning and Acting in Language Models [2022]</li>
@@ -286,7 +293,7 @@
 
             <div class="session">
                 <div class="session-label clinical">Clinical</div>
-                <div class="session-title">Session 2: Why We Can't Just Throw AI Algorithms at the EHR — The Messy Reality of Clinical Data</div>
+                <div class="session-title">Session 2: Why We Can't Just Throw AI Algorithms at the EHR: The Messy Reality of Clinical Data</div>
                 <ul class="session-readings">
                     <li>RadImageNet: An Open Radiologic Deep Learning Research Dataset for Effective Transfer Learning [2022]</li>
                     <li>Multimodal Biomedical AI [2022]</li>
@@ -304,7 +311,7 @@
 
             <div class="session">
                 <div class="session-label clinical">Clinical</div>
-                <div class="session-title">Session 4: A Brief History of Clinical AI Evaluation — The Pitfalls of Automated Evaluation Metrics</div>
+                <div class="session-title">Session 4: A Brief History of Clinical AI Evaluation: The Pitfalls of Automated Evaluation Metrics</div>
                 <ul class="session-readings">
                     <li>ChestX-ray8: Hospital-scale Chest X-ray Database and Benchmarks on Weakly-Supervised Classification and Localization of Common Thorax Diseases [2017]</li>
                     <li>Evaluating progress in automatic chest X-ray radiology report generation (RadCliQ) [2023]</li>
@@ -317,7 +324,7 @@
                 <ul class="session-readings">
                     <li>REINFORCE: Simple statistical gradient-following algorithms for connectionist reinforcement learning [1992]</li>
                     <li>PPO: Training Language Models to Follow Instructions with Human Feedback (RLHF) [2022]</li>
-                    <li>GRPO: DeepSeekMath — Pushing the Limits of Mathematical Reasoning in Open Language Models [2024]</li>
+                    <li>GRPO: DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models [2024]</li>
                     <li>DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning [2025]</li>
                 </ul>
             </div>

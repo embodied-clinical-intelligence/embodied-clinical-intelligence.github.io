@@ -1,12 +1,12 @@
 import { spawn } from 'child_process';
 
 const INPUT = 'ascelpius_rod_robot.mp4';
-const COLS = 140;
-const ROWS = 100;
+const COLS = 160;
+const ROWS = 90;
 const FPS = 24;
 
 const RAMP = ' .:-=+*#%@';
-const CROP = 'crop=864:1080:528:0';
+const CROP = '';
 
 const cellW = 8;
 const cellH = 14;
@@ -27,7 +27,7 @@ for (let i = 0; i < RAMP.length; i++) {
 
 const extractArgs = [
   '-i', INPUT,
-  '-vf', `${CROP},scale=${COLS}:${ROWS}:flags=lanczos,format=gray`,
+  '-vf', `scale=${COLS}:${ROWS}:flags=lanczos,format=gray`,
   '-f', 'rawvideo', '-pix_fmt', 'gray',
   '-r', String(FPS), '-v', 'quiet', '-'
 ];

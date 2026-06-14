@@ -1,8 +1,8 @@
 import { spawn } from 'child_process';
 
 const INPUT = 'ascelpius_rod_robot.mp4';
-const COLS = 70;
-const ROWS = 50;
+const COLS = 140;
+const ROWS = 100;
 const FPS = 24;
 
 const RAMP = ' .:-=+*#%@';

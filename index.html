@@ -73,7 +73,7 @@
     <style>
         :root {
             --bg: #ffffff;
-            --fg: #0d1117;
+            --fg: #000000;
             --muted: #57606a;
             --accent: #1f6feb;
             --card-border: rgba(13, 17, 23, 0.08);
@@ -83,23 +83,23 @@
 
         @media (prefers-color-scheme: dark) {
             :root {
-                --bg: #000000;
-                --fg: #e4e4e4;
-                --muted: #9ca3af;
+                --bg: #0d1117;
+                --fg: #c9d1d9;
+                --muted: #8b949e;
                 --accent: #58a6ff;
                 --card-border: rgba(255, 255, 255, 0.25);
             }
         }
         html[data-theme="dark"] {
-            --bg: #000000;
-            --fg: #e4e4e4;
-            --muted: #9ca3af;
+            --bg: #0d1117;
+            --fg: #c9d1d9;
+            --muted: #8b949e;
             --accent: #58a6ff;
             --card-border: rgba(255, 255, 255, 0.25);
         }
         html[data-theme="light"] {
             --bg: #ffffff;
-            --fg: #0d1117;
+            --fg: #000000;
             --muted: #57606a;
             --accent: #1f6feb;
             --card-border: rgba(13, 17, 23, 0.08);
@@ -162,13 +162,26 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            /* Opaque bg matching the page so the video's flat background can
+               blend into it (mix-blend-mode blends within this stacking
+               context, not the whole page). Makes the video rectangle seamless. */
+            background: var(--bg);
         }
         .ascii-video-wrap video {
             max-width: 780px;
             max-height: 850px;
             object-fit: contain;
             opacity: 1;
+            /* Blend the video's flat background into the page so its rectangle
+               edge is mathematically invisible regardless of color management:
+               white bg + multiply (light), black bg + screen (dark). */
+            mix-blend-mode: multiply;
         }
+        @media (prefers-color-scheme: dark) {
+            .ascii-video-wrap video { mix-blend-mode: screen; }
+        }
+        html[data-theme="dark"] .ascii-video-wrap video { mix-blend-mode: screen; }
+        html[data-theme="light"] .ascii-video-wrap video { mix-blend-mode: multiply; }
         @media (max-width: 1400px) {
             .ascii-video-wrap {
                 position: relative;
@@ -230,7 +243,7 @@
         .vision {
             font-size: 1.05rem;
             line-height: 1.8;
-            color: var(--muted);
+            color: var(--fg);
             text-align: left;
         }
 
@@ -259,12 +272,18 @@
         .session-label.technical { color: #3b82f6; }
         .session-label.clinical { color: #ef4444; }
 
+        /* Grey out in dark mode (OS preference), but only when the user hasn't
+           explicitly forced a theme via the toggle. */
         @media (prefers-color-scheme: dark) {
-            .session-label.technical,
-            .session-label.clinical { color: var(--muted); }
+            html:not([data-theme]) .session-label.technical,
+            html:not([data-theme]) .session-label.clinical { color: var(--muted); }
         }
         html[data-theme="dark"] .session-label.technical,
         html[data-theme="dark"] .session-label.clinical { color: var(--muted); }
+        /* Explicit light toggle always restores the accent colors, even when
+           the OS is in dark mode. */
+        html[data-theme="light"] .session-label.technical { color: #3b82f6; }
+        html[data-theme="light"] .session-label.clinical { color: #ef4444; }
 
         .session-title {
             font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -457,7 +476,7 @@
 
             function apply() {
                 var dark = isDark();
-                document.body.style.background = dark ? '#000000' : '#ffffff';
+                document.body.style.background = dark ? '#0d1117' : '#ffffff';
                 icon.className = dark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
                 var src = dark ? 'ascii_dark.mp4' : 'ascii_light.mp4';
                 if (src !== currentSrc) {

@@ -1,14 +1,19 @@
 import { spawn } from 'child_process';
 
-const INPUT = 'ascelpius_rod_robot.mp4';
+const INPUT = 'cross_bot.mp4';
 const COLS = 240;
 const ROWS = 76;
 const FPS = 24;
-const TRIM_START = 14;
-const TRIM_END = 7;
+// cross_bot.mp4 is full from the first frame to the last (no fade in/out to
+// clip), so we keep every frame — unlike the old source which needed 14/7.
+const TRIM_START = 0;
+const TRIM_END = 0;
 
 const RAMP = ' .:-=+*#%@';
-const CROP = '';
+// cross_bot.mp4 ships with 4px black letterbox bars top & bottom. Luma is
+// inverted below (black -> bright), so without cropping those bars render as
+// solid glyph lines framing the output. Crop them off before sampling.
+const CROP = 'crop=1920:1072:0:4';
 
 // Global contrast boost baked into the encode — replicates a "max contrast"
 // editor pass: pushes greys toward black/white while keeping a thin detail band.
@@ -38,7 +43,7 @@ for (let i = 0; i < RAMP.length; i++) {
 
 const extractArgs = [
   '-i', INPUT,
-  '-vf', `scale=${COLS}:${ROWS}:flags=lanczos,format=gray`,
+  '-vf', `${CROP ? CROP + ',' : ''}scale=${COLS}:${ROWS}:flags=lanczos,format=gray`,
   '-f', 'rawvideo', '-pix_fmt', 'gray',
   '-r', String(FPS), '-v', 'quiet', '-'
 ];
@@ -71,8 +76,6 @@ extract.on('close', (code) => {
     }
     asciiFrames.push(lines.join('\n'));
   }
-
-  asciiFrames.reverse();
 
   const usedFrameCount = asciiFrames.length;
   console.log(`Using ${usedFrameCount} frames after trim`);

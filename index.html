@@ -8,8 +8,9 @@
     <meta name="keywords" content="embodied clinical intelligence, AI in medicine, clinical AI agents, medical AI research, AI clinical workflows, clinical decision support, healthcare AI, AI in radiology, large language models medicine, reinforcement learning clinical">
     <meta name="color-scheme" content="light dark">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    <link rel="icon" type="image/png" href="favicon.png?v=2" />
-    <link rel="apple-touch-icon" href="favicon.png?v=2" />
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="favicon.png?v=3" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png?v=3" />
     <link rel="canonical" href="https://embodied-clinical-intelligence.github.io">
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
@@ -183,7 +184,19 @@
         html[data-theme="dark"] .ascii-video-wrap video { mix-blend-mode: screen; }
         html[data-theme="light"] .ascii-video-wrap video { mix-blend-mode: multiply; }
         @media (max-width: 1400px) {
+            /* Stack the layout: video on top, content below. The <aside> follows
+               <main> in the DOM, so flex ordering lifts it above the title.
+               Override the base `height:100%` to auto, else the fixed-height
+               flex column squishes the video into a sliver. */
+            body {
+                display: flex;
+                flex-direction: column;
+                height: auto;
+                min-height: 100%;
+            }
             .ascii-video-wrap {
+                order: -1;
+                flex-shrink: 0;
                 position: relative;
                 left: 0;
                 top: auto;
@@ -191,7 +204,7 @@
                 bottom: auto;
                 width: 100%;
                 justify-content: center;
-                padding: 0 0 40px;
+                padding: 24px 0 8px;
             }
             .ascii-video-wrap video {
                 max-width: 450px;
@@ -211,7 +224,7 @@
                 padding: 40px 48px 12px;
                 margin: 0 auto;
             }
-            .wrap h1 { margin-top: 40px; margin-bottom: 48px; }
+            .wrap h1 { margin-top: 8px; margin-bottom: 48px; text-align: center; }
             .wrap footer { text-align: center; margin-top: 24px; }
         }
 

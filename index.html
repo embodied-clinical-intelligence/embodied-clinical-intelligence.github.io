@@ -282,8 +282,8 @@
             letter-spacing: 0.5px;
             margin-bottom: 4px;
         }
-        .session-label.technical { color: #3b82f6; }
-        .session-label.clinical { color: #ef4444; }
+        .session-label.technical { color: #ef4444; }
+        .session-label.clinical { color: #3b82f6; }
 
         /* Grey out in dark mode (OS preference), but only when the user hasn't
            explicitly forced a theme via the toggle. */
@@ -295,8 +295,8 @@
         html[data-theme="dark"] .session-label.clinical { color: var(--muted); }
         /* Explicit light toggle always restores the accent colors, even when
            the OS is in dark mode. */
-        html[data-theme="light"] .session-label.technical { color: #3b82f6; }
-        html[data-theme="light"] .session-label.clinical { color: #ef4444; }
+        html[data-theme="light"] .session-label.technical { color: #ef4444; }
+        html[data-theme="light"] .session-label.clinical { color: #3b82f6; }
 
         .session-title {
             font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
